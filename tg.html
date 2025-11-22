@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lhy-TG账号</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #bbdefb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 150, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 10%, transparent 10%);
+            background-size: 15px 15px;
+            transform: rotate(30deg);
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #29b6f6;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .title {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: #1565c0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .datetime {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .latency {
+            color: #2e7d32;
+            font-size: 14px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .channel-info {
+            background: rgba(41, 182, 246, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .channel-name {
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .channel-desc {
+            font-size: 15px;
+            font-weight: 500;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .action-btn {
+            display: block;
+            width: 85%;
+            margin: 25px auto;
+            padding: 15px;
+            background: linear-gradient(to right, #2196f3, #1976d2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.6);
+        }
+        
+        .action-btn:active {
+            transform: translateY(0);
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: #666;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="avatar">
+            <img src="/lhy.jpg" alt="lhy">
+
+            </div>
+            <h1 class="title">lhy-TG账号</h1>
+            <div class="datetime">2025年9月18日星期四 06:34:20</div>
+            
+            <div class="channel-info">
+                <div class="channel-name">官方频道@LHYXW</div>
+                <div class="channel-desc">LHY纸飞机账号<br>全网支持比价<br>全网低价<br>一手号商</div>
+            </div>
+            
+            <button class="action-btn" onclick="window.location.href='index1.html'">进入官方发布页面</button>
+            
+            <div class="copyright">©2025-LHY . All rights reserved.</div>
+        </div>
+    </div>
+
+    <script>
+        // 更新时间
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                weekday: 'long',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.querySelector('.datetime').textContent = now.toLocaleDateString('zh-CN', options);
+            
+            // 模拟网络延迟
+            const latency = Math.floor(Math.random() * 30) + 40;
+            document.querySelector('.latency').textContent = `网络延迟: ${latency}ms`;
+        }
+        
+        // 初始更新
+        updateDateTime();
+        
+        // 每秒更新一次
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
