@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>友情链接 | 合作伙伴</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-top: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .link-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .link-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3498db, #2ecc71);
+        }
+        
+        .link-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .link-info {
+            flex-grow: 1;
+        }
+        
+        .link-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .link-desc {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .link-url {
+            color: #3498db;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        
+        .link-url:hover {
+            color: #2980b9;
+        }
+        
+        .link-url i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .category-section {
+            margin-bottom: 50px;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title i {
+            margin-right: 12px;
+            color: #3498db;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #7f8c8d;
+            border-top: 1px solid #ecf0f1;
+            margin-top: 30px;
+        }
+        
+        .apply-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .apply-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .apply-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .links-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .link-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .links-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .link-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .link-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        /* 友情链接色彩方案 */
+        .color-1 { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .color-2 { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .color-3 { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .color-4 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .color-5 { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .color-6 { background: linear-gradient(135deg, #1abc9c, #16a085); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>友情链接</h1>
+            <p class="subtitle">与志同道合的伙伴们一同前行，互相支持，共同成长。以下是我们的合作伙伴与友情网站链接。</p>
+        </header>
+        
+        <div class="apply-section">
+            <h2 class="apply-title">友情链接申请</h2>
+            <p>如果您希望与本站交换友情链接，请确保您的网站内容健康、合法，且与本站主题相关。申请前请先将本站加入您的友情链接。</p>
+            <a href="mailto:example@domain.com" class="apply-btn">申请友情链接</a>
+        </div>
+        
+        <div class="category-section">
+            <h3 class="category-title"><i class="fas fa-laptop-code"></i> 技术博客</h3>
+            <div class="links-container">
+                <div class="link-card">
+                    <div class="link-logo color-1">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">前端开发指南</h4>
+                        <p class="link-desc">专注于前端开发技术，分享HTML、CSS、JavaScript等前端开发经验与教程。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://frontend.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-logo color-2">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">后端技术栈</h4>
+                        <p class="link-desc">深入探讨后端开发技术，包括数据库、服务器架构、API设计等实用内容。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://backend.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-logo color-3">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">AI探索者</h4>
+                        <p class="link-desc">人工智能与机器学习技术分享，涵盖深度学习、自然语言处理等领域。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://ai.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <h3 class="category-title"><i class="fas fa-paint-brush"></i> 创意设计</h3>
+            <div class="links-container">
+                <div class="link-card">
+                    <div class="link-logo color-4">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">设计灵感集</h4>
+                        <p class="link-desc">收集全球优秀设计作品，提供UI/UX设计灵感和设计趋势分析。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://design.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-logo color-5">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">摄影视觉</h4>
+                        <p class="link-desc">专业摄影技巧分享，视觉艺术探索，摄影作品展示与赏析。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://photo.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-logo color-6">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">视频创作工坊</h4>
+                        <p class="link-desc">视频拍摄与剪辑教程，创意视频分享，影视制作技巧交流平台。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://video.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <h3 class="category-title"><i class="fas fa-newspaper"></i> 资讯媒体</h3>
+            <div class="links-container">
+                <div class="link-card">
+                    <div class="link-logo color-1">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">科技资讯网</h4>
+                        <p class="link-desc">最新科技动态、产品发布、行业趋势分析，涵盖互联网、硬件、软件等领域。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://technews.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-logo color-2">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="link-info">
+                        <h4 class="link-title">数字阅读</h4>
+                        <p class="link-desc">电子书推荐、阅读心得分享、书评与作者访谈，打造数字阅读社区。</p>
+                        <a href="https://example.com" target="_blank" class="link-url">https://ebook.example.com <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 友情链接页面 | 本页展示所有友情链接均为示例，实际使用时请替换为真实链接</p>
+            <p>最后更新: 2026年3月2日</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 为友情链接卡片添加点击效果
+        document.querySelectorAll('.link-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // 防止点击链接时触发卡片点击
+                if (e.target.tagName === 'A') return;
+                
+                const link = this.querySelector('.link-url');
+                if (link) {
+                    window.open(link.href, '_blank');
+                }
+            });
+            
+            // 添加键盘导航支持
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const link = this.querySelector('.link-url');
+                    if (link) {
+                        window.open(link.href, '_blank');
+                    }
+                }
+            });
+        });
+        
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.link-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + index * 100);
+            });
+        });
+        
+        // 添加友情链接申请表单交互（示例）
+        document.querySelector('.apply-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('友情链接申请功能示例\n实际使用时，这里可以跳转到申请表单页面或打开模态框。\n示例邮箱: example@domain.com');
+        });
+    </script>
+</body>
+</html>
