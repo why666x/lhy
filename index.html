@@ -63,17 +63,21 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    
+            /* 修改此处 */
             min-height: 100vh;
             min-height: -webkit-fill-available;
+            height: auto; /* 关键：确保高度随内容自动撑开 */
+    
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* 将 center 改为 flex-start，让内容从顶部开始，避免长页面在短屏上错位 */
+    
             padding: 20px;
             padding-top: calc(20px + var(--safe-area-top));
             padding-bottom: calc(20px + var(--safe-area-bottom));
             color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            overflow-y: auto; /* 确保内容溢出时可以滚动 */
             transition: color 0.3s ease;
         }
 
@@ -213,7 +217,7 @@
         
         /* 响应式媒体查询 */
         @media (max-width: 768px) {
-            html { font-size: 14px; }
+            html { font-size: 12px; }
             body { padding: 15px; padding-top: calc(15px + var(--safe-area-top)); padding-bottom: calc(15px + var(--safe-area-bottom)); }
             .menu-toggle { top: calc(15px + var(--safe-area-top)); left: 15px; width: 40px; height: 40px; gap: 5px; }
             .theme-toggle { top: calc(15px + var(--safe-area-top)); right: 15px; width: 40px; height: 40px; font-size: 1.1rem; }
@@ -231,8 +235,9 @@
             width: 100%;
             max-width: 500px;
             min-width: 280px;
-            animation: fadeIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
             margin: 0 auto;
+            /* 移除 animation 中的 transform 移动，只保留渐变，避免手机端出现诡异留白 */
+            animation: fadeIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
         
         @keyframes fadeIn {
@@ -285,6 +290,20 @@
             width: 130px;
             height: 130px;
             margin: 0 auto 25px;
+        }
+
+        @media (max-height: 700px) {
+         .card {
+             padding: 15px; /* 在高度受限的手机上减小内边距 */
+         }
+         .profile-header {
+             margin-bottom: 15px;
+         }
+         .avatar-container {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+         }
         }
         
         @media (max-width: 480px) {
@@ -349,7 +368,7 @@
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
+            gap: 13px;
             margin-bottom: 25px;
             position: relative;
             z-index: 1;
