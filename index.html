@@ -406,10 +406,13 @@
         }
 
         /* 电脑端：合并卡片保持居中显示 */
-        @media screen and (min-width: 768px) {
+        @media screen and (max-width: 767px) {
+            .stats-container {
+                grid-template-columns: 1fr !important; /* 强制单列 */
+            }
+            
             .stat-item.combined-stats {
-                max-width: 380px;
-                margin: 0 auto;
+                grid-column: 1 / -1; /* 跨列 */
             }
         }
         
