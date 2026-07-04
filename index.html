@@ -365,17 +365,52 @@
             opacity: 0.9;
         }
         
+        /* ========== 合并统计卡片样式 ========== */
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: 1fr;
             gap: 13px;
             margin-bottom: 25px;
             position: relative;
             z-index: 1;
         }
-        
-        @media (max-width: 480px) {
-            .stats-container { grid-template-columns: 1fr; gap: 12px; }
+
+        .stat-item.combined-stats {
+            padding: 12px 8px;
+        }
+
+        .stat-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .stat-divider {
+            width: 1px;
+            background: rgba(41, 182, 246, 0.2);
+            margin: 0 10px;
+            align-self: stretch;
+        }
+
+        /* 手机端：合并卡片占满整行 */
+        @media screen and (max-width: 767px) {
+            .stats-container {
+                grid-template-columns: 1fr !important; /* 强制单列 */
+            }
+            
+            .stat-item.combined-stats {
+                grid-column: 1 / -1; /* 跨列 */
+            }
+        }
+
+        /* 电脑端：合并卡片保持居中显示 */
+        @media screen and (min-width: 768px) {
+            .stat-item.combined-stats {
+                max-width: 380px;
+                margin: 0 auto;
+            }
         }
         
         .stat-item {
@@ -628,21 +663,26 @@
                 <p class="subtitle">Telegram专业服务商 · 一手号源 · 全网低价</p>
             </div>
             
-            <!-- 统计区块 -->
+            <!-- 统计区块（合并为一个卡片） -->
             <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-label">
-                        <i class="fas fa-check-circle"></i>
-                        <span>成功交易</span>
+                <div class="stat-item combined-stats">
+                    <div style="display: flex; justify-content: space-around; width: 100%;">
+                        <div class="stat-block">
+                            <div class="stat-label">
+                                <i class="fas fa-check-circle"></i>
+                                <span>成功交易</span>
+                            </div>
+                            <div class="stat-value" id="transactionCount">40K+</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-block">
+                            <div class="stat-label">
+                                <i class="fas fa-star"></i>
+                                <span>用户评分</span>
+                            </div>
+                            <div class="stat-value">5.0</div>
+                        </div>
                     </div>
-                    <div class="stat-value" id="transactionCount">40K+</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">
-                        <i class="fas fa-star"></i> <!-- 修复了原本少一个空格导致图标不显示的 bug -->
-                        <span>用户评分</span>
-                    </div>
-                    <div class="stat-value">5.0</div>
                 </div>
             </div>
             
