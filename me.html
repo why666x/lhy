@@ -10,6 +10,30 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/190176824">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script>
+        // 💡 步骤 A: 设置你的起始日期 (格式：年, 月-1, 日)
+        // 比如：2025年1月1日，月份填 0
+        const siteStartDate = new Date(2025, 6, 31); 
+    
+        function updateSiteTimer() {
+            const now = new Date();
+            const diffTime = now - siteStartDate; // 毫秒差
+    
+            // 💡 步骤 B: 计算天数、小时等
+            const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+    
+            // 💡 步骤 C: 缩短显示文本，使其更适合 stats 容器的紧凑布局
+            document.getElementById('runningTime').innerHTML = 
+                `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+        }
+    
+        // 每秒更新
+        setInterval(updateSiteTimer, 1000);
+        updateSiteTimer(); // 初始化
+    </script>
     <!-- 尽早执行主题初始化，防止页面闪烁 -->
     <script>
         (function() {
@@ -22,30 +46,6 @@
             }
         })();
     </script>
-    <script>
-    // 💡 步骤 A: 设置你的起始日期 (格式：年, 月-1, 日)
-    // 比如：2025年1月1日，月份填 0
-    const siteStartDate = new Date(2025, 6, 31); 
-
-    function updateSiteTimer() {
-        const now = new Date();
-        const diffTime = now - siteStartDate; // 毫秒差
-
-        // 💡 步骤 B: 计算天数、小时等
-        const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
-
-        // 💡 步骤 C: 缩短显示文本，使其更适合 stats 容器的紧凑布局
-        document.getElementById('runningTime').innerHTML = 
-            `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
-    }
-
-    // 每秒更新
-    setInterval(updateSiteTimer, 1000);
-    updateSiteTimer(); // 初始化
-</script>
 
     <style>
         :root {
@@ -685,25 +685,13 @@
             
             <!-- 统计区块（合并为一个卡片） -->
             <div class="stats-container">
-                <div class="stat-item combined-stats">
-                    <div style="display: flex; justify-content: space-around; width: 100%;">
-                        <div class="stat-item">
-                           <span class="stat-label">做号商的第</span>
-                          <!-- 这里的 id 用于 JS 定位绑定 -->
-                       <span class="stat-value" id="runningTime">计算中...</span>
-                      </div>
-                     </div>
-                    <div class="stat-divider"></div>
-                        <div class="stat-block">
-                            <div class="stat-label">
-                                <i class="fas fa-star"></i>
-                                <span>用户评分</span>
-                            </div>
-                            <div class="stat-value">5.0</div>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <span class="stat-label">做号商已经</span>
+                    <!-- 这里的 id 用于 JS 定位绑定 -->
+                    <span class="stat-value" id="runningTime">计算中...</span>
                 </div>
             </div>
+            
             
             <!-- 时间与延迟 -->
             <div class="datetime-container">
@@ -726,25 +714,24 @@
                     <div class="channel-badge">官方认证</div>
                 </div>
                 <div class="channel-desc">
-                    lhy源渠，TG一手号商、支持纸飞机一切业务。
-                    <br><br>
-                    <strong>核心服务：</strong><br>
-                    • 全网比价，价格透明<br>
+                    lhy 源渠 @lhyid　　　　　　　　　　　　　　　　
+                    <strong>备用网站：</strong><br>
+                    • 纸飞机TG业务<br>
                     • 快速稳定，安全可靠
                 </div>
                 <div class="channel-tags">
-                    <span class="tag">纸飞机账号</span>
-                    <span class="tag">一手号商</span>
-                    <span class="tag">全网低价</span>
-                    <span class="tag">专业服务</span>
+                    <span class="tag">纸飞机TG业务</span>
+                    <span class="tag">lhy 源渠 @lhyid</span>
+                    <span class="tag">@quanyong</span>
+                    <span class="tag">@yuan_qv</span>
                 </div>
             </div>
             
             <!-- 动作按钮区 -->
             <div class="action-buttons">
-                <button class="action-btn" onclick="openLink('https://new.818fka.com/shop/lhy', this)">
-                    <i class="btn-icon fas fa-shopping-cart"></i>
-                    <span>购买账号</span>
+                <button class="action-btn" onclick="openLink('https://t.me/lhyid', this)">
+                    <i class="btn-icon fas fa-user"></i>
+                    <span>联系我</span>
                 </button>
             </div>
             
@@ -754,10 +741,6 @@
                     <i class="fab fa-telegram-plane"></i>
                     <span>频道</span>
                 </a>
-                <a href="https://t.me/LHYID" class="quick-link" target="_blank" title="联系客服">
-                    <i class="fas fa-headset"></i>
-                    <span>客服</span>
-                </a>
                 <a href="javascript:void(0);" class="quick-link" onclick="shareProfile()" title="分享页面">
                     <i class="fas fa-share-alt"></i>
                     <span>分享</span>
@@ -766,7 +749,7 @@
             
             <!-- 版权声明 -->
             <div class="copyright">
-                © 2026 LHY官方服务 · 保留所有权利<br>
+                © 2026 LHY 源渠 @lhyid · 保留所有权利<br>
                 <span style="font-size: 0.75rem; opacity: 0.7;">最后更新: <span id="lastUpdated">--</span></span>
             </div>
         </div>
