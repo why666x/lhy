@@ -622,31 +622,17 @@
         </div>
         <div class="sidebar-menu-title">lhy 源渠 @lhyid</div>
         <div class="sidebar-nav">
-            <a href="https://x.527891.xyz/" target="_blank" class="sidebar-item" onclick="toggleSidebar()">
-                <div class="item-content">
-                    <i class="item-icon fas fa-file"></i>
-                    <span>使用教程</span>
-                </div>
-                <i class="arrow-icon fas fa-chevron-right"></i>
-            </a>
             <a href="https://yuanqv.top/link" target="_blank" class="sidebar-item" onclick="toggleSidebar()">
                 <div class="item-content">
-                    <i class="item-icon fas fa-link"></i>
+                    <i class="item-icon fas fa-file"></i>
                     <span>友情链接</span>
                 </div>
                 <i class="arrow-icon fas fa-chevron-right"></i>
             </a>
-            <a href="https://t.me/lhyid" target="_blank" class="sidebar-item" onclick="toggleSidebar()">
-                <div class="item-content">
-                    <i class="item-icon fas fa-user"></i>
-                    <span>联系我</span>
-                </div>
-                <i class="arrow-icon fas fa-chevron-right"></i>
-            </a>
-            <a href="https://yuanqv.top/jianjie" target="_blank" class="sidebar-item" onclick="toggleSidebar()">
+            <a href="https://yuanqv.top/" target="_blank" class="sidebar-item" onclick="toggleSidebar()">
                 <div class="item-content">
                     <i class="item-icon fas fa-check"></i>
-                    <span>切换至简洁版</span>
+                    <span>购买账号</span>
                 </div>
                 <i class="arrow-icon fas fa-chevron-right"></i>
             </a>
@@ -669,8 +655,8 @@
                     </div>
                     <div class="avatar-status" title="在线"></div>
                 </div>
-                <h1 class="title">lhy-TG账号</h1>
-                <p class="subtitle">Telegram专业服务商 · 一手号源 · 全网低价</p>
+                <h1 class="title">lhy 源渠</h1>
+                <p class="subtitle">Telegram专业服务商</p>
             </div>
             
             <!-- 统计区块（合并为一个卡片） -->
@@ -680,9 +666,40 @@
                         <div class="stat-block">
                             <div class="stat-label">
                                 <i class="fas fa-check-circle"></i>
-                                <span>成功交易</span>
+                                <span>做号商已经</span>
                             </div>
-                            <div class="stat-value" id="transactionCount">40K+</div>
+                            <div class="stat-value" id="transactionCount">
+                                 <div class="time-box">
+                                      <span class="highlight" id="timeCounter">正在计算...</span>
+                             </div>
+
+                                 <script>
+                                        function updateTimer() {
+                                            // 设置起始时间（格式：YYYY-MM-DD）
+                                            const startDate = new Date('2025-07-31T20:36:00');
+                                            const now = new Date();
+            
+                                            // 计算时间差（毫秒）
+                                            const diffTime = now - startDate;
+            
+                                            // 换算为天、小时、分钟、秒
+                                            const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                                            const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                            const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+                                            const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+
+                                            // 更新到网页上
+                                            document.getElementById('timeCounter').innerHTML = 
+                                                `${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒`;
+                                                              }  
+
+                                        // 每秒更新一次，实现动态计时效果
+                                        setInterval(updateTimer, 1000);
+                                        // 初始化运行一次避免一秒的延迟
+                                        updateTimer();
+                                </script>
+
+                            </div>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-block">
