@@ -22,6 +22,30 @@
             }
         })();
     </script>
+    <script>
+    // 💡 步骤 A: 设置你的起始日期 (格式：年, 月-1, 日)
+    // 比如：2025年1月1日，月份填 0
+    const siteStartDate = new Date(2025, 6, 31); 
+
+    function updateSiteTimer() {
+        const now = new Date();
+        const diffTime = now - siteStartDate; // 毫秒差
+
+        // 💡 步骤 B: 计算天数、小时等
+        const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+
+        // 💡 步骤 C: 缩短显示文本，使其更适合 stats 容器的紧凑布局
+        document.getElementById('runningTime').innerHTML = 
+            `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+    }
+
+    // 每秒更新
+    setInterval(updateSiteTimer, 1000);
+    updateSiteTimer(); // 初始化
+</script>
 
     <style>
         :root {
@@ -663,45 +687,13 @@
             <div class="stats-container">
                 <div class="stat-item combined-stats">
                     <div style="display: flex; justify-content: space-around; width: 100%;">
-                        <div class="stat-block">
-                            <div class="stat-label">
-                                <i class="fas fa-check-circle"></i>
-                                <span>做号商已经</span>
-                            </div>
-                            <div class="stat-value" id="transactionCount">
-                                 <div class="time-box">
-                                      <span class="highlight" id="timeCounter">正在计算...</span>
-                             </div>
-
-                                 <script>
-                                        function updateTimer() {
-                                            // 设置起始时间（格式：YYYY-MM-DD）
-                                            const startDate = new Date('2025-07-31T20:36:00');
-                                            const now = new Date();
-            
-                                            // 计算时间差（毫秒）
-                                            const diffTime = now - startDate;
-            
-                                            // 换算为天、小时、分钟、秒
-                                            const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                                            const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                                            const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
-                                            const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
-
-                                            // 更新到网页上
-                                            document.getElementById('timeCounter').innerHTML = 
-                                                `${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒`;
-                                                              }  
-
-                                        // 每秒更新一次，实现动态计时效果
-                                        setInterval(updateTimer, 1000);
-                                        // 初始化运行一次避免一秒的延迟
-                                        updateTimer();
-                                </script>
-
-                            </div>
-                        </div>
-                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                           <span class="stat-label">做号商的第</span>
+                          <!-- 这里的 id 用于 JS 定位绑定 -->
+                       <span class="stat-value" id="runningTime">计算中...</span>
+                      </div>
+                     </div>
+                    <div class="stat-divider"></div>
                         <div class="stat-block">
                             <div class="stat-label">
                                 <i class="fas fa-star"></i>
